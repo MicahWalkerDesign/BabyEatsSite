@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BabyEats — Starting Solids, Simplified</title>
+<meta name="description" content="A 24-week baby-led weaning plan built on WHO, AAP, ESPGHAN and LEAP guidelines. 72 first foods, allergen tracking, iron-first scheduling. Week 1 free.">
+
+<meta property="og:title" content="BabyEats — Starting Solids, Simplified">
+<meta property="og:description" content="The smarter way to start solids. 24-week plan, 72 foods, allergen tracking. Week 1 free.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/icon.png">
+
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --green: #4CAF50;
+  --green-dark: #2E7D32;
+  --green-light: #66BB6A;
+  --green-bg: #E8F5E9;
+  --blue: #2196F3;
+  --blue-bg: #E3F2FD;
+  --peach: #FF8A65;
+  --peach-bg: #FFF3E0;
+  --cream: #FFF8F0;
+  --cream-alt: #FFF0E6;
+  --text-dark: #1B3A2D;
+  --text-mid: #3D5C4A;
+  --text-soft: #6B8070;
+  --border: #D6EAD8;
+  --shadow: 0 8px 32px rgba(46,125,50,0.10);
+  --shadow-lg: 0 20px 60px rgba(46,125,50,0.15);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  background: var(--cream);
+  color: var(--text-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ─── Header ────────────────────────────────── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,248,240,0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--text-dark);
+  text-decoration: none;
+}
+.logo img {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green-dark);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 99px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.cta-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(46,125,50,0.3);
+}
+
+/* ─── Hero ──────────────────────────────────── */
+.hero {
+  padding: 80px 0 60px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 500px;
+  height: 500px;
+  background: var(--green-bg);
+  border-radius: 50%;
+  z-index: 0;
+  opacity: 0.6;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  left: -150px;
+  width: 400px;
+  height: 400px;
+  background: var(--blue-bg);
+  border-radius: 50%;
+  z-index: 0;
+  opacity: 0.4;
+}
+.hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.pill-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 99px;
+  padding: 6px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-soft);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.pill-tag .dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+}
+.hero h1 {
+  font-size: 64px;
+  line-height: 1.05;
+  font-weight: 900;
+  color: var(--green-dark);
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+.hero h1 .accent { color: var(--text-dark); }
+.hero p.lead {
+  font-size: 20px;
+  color: var(--text-soft);
+  margin-bottom: 32px;
+  max-width: 540px;
+}
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--green-dark);
+  color: white;
+  padding: 16px 32px;
+  border-radius: 99px;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(46,125,50,0.35);
+}
+.free-badge {
+  background: var(--peach);
+  color: white;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 99px;
+  letter-spacing: 0.04em;
+}
+.hero-meta {
+  display: flex;
+  gap: 24px;
+  font-size: 14px;
+  color: var(--text-soft);
+}
+.hero-meta strong {
+  color: var(--text-dark);
+  display: block;
+  font-size: 22px;
+  font-weight: 800;
+}
+.hero-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.phone-frame {
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 8px solid #1A1A1A;
+  max-width: 320px;
+}
+.phone-frame img {
+  width: 100%;
+  display: block;
+}
+
+/* ─── Trust strip ───────────────────────────── */
+.trust {
+  padding: 40px 0;
+  background: white;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.trust-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.trust-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+.trust-source {
+  font-weight: 800;
+  color: var(--green-dark);
+  font-size: 18px;
+  letter-spacing: 0.04em;
+}
+
+/* ─── Features ──────────────────────────────── */
+.section-title {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.section-title h2 {
+  font-size: 44px;
+  font-weight: 900;
+  color: var(--green-dark);
+  line-height: 1.1;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+.section-title p {
+  font-size: 18px;
+  color: var(--text-soft);
+  max-width: 600px;
+  margin: 0 auto;
+}
+.features {
+  padding: 100px 0;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.feature {
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 24px;
+  padding: 32px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.feature:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+.feature-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+.feature-icon.green { background: var(--green-bg); }
+.feature-icon.blue { background: var(--blue-bg); }
+.feature-icon.peach { background: var(--peach-bg); }
+.feature h3 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+.feature p {
+  font-size: 15px;
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+/* ─── Screenshot Showcase ──────────────────── */
+.showcase {
+  padding: 100px 0;
+  background: white;
+}
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+.showcase-item {
+  text-align: center;
+}
+.showcase-item .phone-frame {
+  margin: 0 auto 24px;
+  max-width: 260px;
+}
+.showcase-item h4 {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+.showcase-item p {
+  font-size: 14px;
+  color: var(--text-soft);
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* ─── Science section ──────────────────────── */
+.science {
+  padding: 100px 0;
+}
+.science-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.science-content h2 {
+  font-size: 44px;
+  font-weight: 900;
+  color: var(--green-dark);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+.science-content p {
+  font-size: 17px;
+  color: var(--text-soft);
+  margin-bottom: 24px;
+}
+.science-list {
+  list-style: none;
+  margin-top: 24px;
+}
+.science-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 15px;
+  color: var(--text-mid);
+}
+.science-list li:last-child { border-bottom: none; }
+.science-list .check {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: var(--green);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 14px;
+}
+.science-image .phone-frame {
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* ─── Pricing ──────────────────────────────── */
+.pricing {
+  padding: 100px 0;
+  background: var(--green-bg);
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.price-card {
+  background: white;
+  border: 1.5px solid var(--border);
+  border-radius: 24px;
+  padding: 40px 32px;
+  position: relative;
+}
+.price-card.featured {
+  border: 2px solid var(--green-dark);
+  background: white;
+  box-shadow: var(--shadow);
+}
+.price-card .label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 12px;
+}
+.price-card h3 {
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+.price-card .price {
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--green-dark);
+  margin-bottom: 4px;
+  line-height: 1;
+}
+.price-card .price-sub {
+  font-size: 13px;
+  color: var(--text-soft);
+  margin-bottom: 24px;
+}
+.price-card ul {
+  list-style: none;
+  margin-bottom: 28px;
+}
+.price-card ul li {
+  font-size: 14px;
+  color: var(--text-mid);
+  padding: 8px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.price-card ul li::before {
+  content: '✓';
+  color: var(--green);
+  font-weight: 900;
+  flex-shrink: 0;
+}
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  right: 24px;
+  background: var(--peach);
+  color: white;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 5px 14px;
+  border-radius: 99px;
+  letter-spacing: 0.04em;
+}
+
+/* ─── Final CTA ────────────────────────────── */
+.final-cta {
+  padding: 100px 0;
+  text-align: center;
+  background: var(--green-dark);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.final-cta::before, .final-cta::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+}
+.final-cta::before {
+  width: 300px; height: 300px;
+  top: -100px; right: -50px;
+  background: rgba(255,255,255,0.05);
+}
+.final-cta::after {
+  width: 200px; height: 200px;
+  bottom: -50px; left: -50px;
+  background: rgba(255,138,101,0.15);
+}
+.final-cta h2 {
+  font-size: 48px;
+  font-weight: 900;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+  letter-spacing: -0.02em;
+}
+.final-cta p {
+  font-size: 18px;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 32px;
+  max-width: 540px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 1;
+}
+.btn-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: white;
+  color: var(--green-dark);
+  padding: 18px 36px;
+  border-radius: 99px;
+  font-weight: 800;
+  font-size: 17px;
+  text-decoration: none;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.2s;
+}
+.btn-white:hover { transform: translateY(-2px); }
+
+/* ─── Footer ────────────────────────────────── */
+footer {
+  padding: 40px 0;
+  background: var(--text-dark);
+  color: rgba(255,255,255,0.6);
+  font-size: 13px;
+}
+footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+footer .logo {
+  color: white;
+}
+footer .links {
+  display: flex;
+  gap: 24px;
+}
+footer .links a {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+footer .links a:hover { color: white; }
+
+/* ─── Responsive ────────────────────────────── */
+@media (max-width: 900px) {
+  .hero h1 { font-size: 44px; }
+  .hero p.lead { font-size: 17px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+  .hero-actions { justify-content: center; }
+  .hero-meta { justify-content: center; }
+  .features-grid { grid-template-columns: 1fr; }
+  .showcase-grid { grid-template-columns: 1fr; gap: 60px; }
+  .science-grid { grid-template-columns: 1fr; gap: 40px; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .section-title h2, .science-content h2, .final-cta h2 { font-size: 32px; }
+  .trust-row { gap: 20px; }
+  .trust-source { font-size: 15px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══════════════════════════════ -->
+<header>
+  <div class="container">
+    <a href="#" class="logo">
+      <img src="assets/icon.png" alt="BabyEats">
+      BabyEats
+    </a>
+    <a href="https://apps.apple.com/au/app/babyeats-blw-meal-planner/id6759222135" class="cta-btn" target="_blank" rel="noopener">
+      Get the App
+    </a>
+  </div>
+</header>
+
+<!-- ═══ HERO ═════════════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="pill-tag"><span class="dot"></span>BLW · Purées · Mixed Feeding</div>
+        <h1>Starting solids,<br><span class="accent">simplified.</span></h1>
+        <p class="lead">A 24-week weaning plan personalised to your baby. 72 first foods. Allergen-safe scheduling. Built on the same guidelines paediatricians use.</p>
+        <div class="hero-actions">
+          <a href="https://apps.apple.com/au/app/babyeats-blw-meal-planner/id6759222135" class="btn-primary" target="_blank" rel="noopener">
+            Download on App Store
+          </a>
+          <span class="free-badge">Week 1 Free</span>
+        </div>
+        <div class="hero-meta">
+          <div>
+            <strong>72</strong>
+            First foods
+          </div>
+          <div>
+            <strong>24</strong>
+            Week plan
+          </div>
+          <div>
+            <strong>9</strong>
+            Allergens tracked
+          </div>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="phone-frame">
+          <img src="assets/screenshots/ipad_2.png" alt="BabyEats home dashboard">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRUST ════════════════════════════════ -->
+<section class="trust">
+  <div class="container">
+    <div class="trust-row">
+      <span class="trust-label">Built on guidance from</span>
+      <span class="trust-source">WHO</span>
+      <span class="trust-source">AAP</span>
+      <span class="trust-source">ESPGHAN</span>
+      <span class="trust-source">EFSA</span>
+      <span class="trust-source">LEAP trial</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FEATURES ═════════════════════════════ -->
+<section class="features">
+  <div class="container">
+    <div class="section-title">
+      <h2>Everything you need.<br>Nothing you don't.</h2>
+      <p>BabyEats removes the guesswork from starting solids — week by week, food by food.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-icon green">📅</div>
+        <h3>Week-by-week plan</h3>
+        <p>24 weeks of structured introductions that automatically advance to your baby's age. No spreadsheets, no second-guessing.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon peach">⚠️</div>
+        <h3>Allergens, safely</h3>
+        <p>The big 9 allergens scheduled when baby is developmentally ready — with clear emergency steps if a reaction happens.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon blue">🩸</div>
+        <h3>Iron-first scheduling</h3>
+        <p>Iron is the #1 nutrient gap at 6 months. BabyEats prioritises iron-rich foods from day one — every single week.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon green">📊</div>
+        <h3>Reaction tracking</h3>
+        <p>Swipe to log likes, dislikes, allergic reactions. See exactly which foods are working and which to repeat.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon peach">🌱</div>
+        <h3>Diet flexibility</h3>
+        <p>Omnivore, pescatarian or vegetarian — the full 24-week curriculum adapts to your family's choices.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon blue">👶</div>
+        <h3>Multiple kids</h3>
+        <p>Manage profiles for more than one child. Each baby gets their own personalised plan and tracking history.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SHOWCASE ═════════════════════════════ -->
+<section class="showcase">
+  <div class="container">
+    <div class="section-title">
+      <h2>See it in action.</h2>
+      <p>Designed for tired parents at 6am, not nutrition PhDs.</p>
+    </div>
+    <div class="showcase-grid">
+      <div class="showcase-item">
+        <div class="phone-frame">
+          <img src="assets/screenshots/ipad_1.png" alt="BabyEats meal planner">
+        </div>
+        <h4>Daily meal plan</h4>
+        <p>Iron-rich combinations laid out day-by-day. Swap foods with one tap.</p>
+      </div>
+      <div class="showcase-item">
+        <div class="phone-frame">
+          <img src="assets/screenshots/ipad_3.png" alt="BabyEats food library">
+        </div>
+        <h4>72-food library</h4>
+        <p>Filter by group, allergen status, or what you've tried. Swipe to log reactions.</p>
+      </div>
+      <div class="showcase-item">
+        <div class="phone-frame">
+          <img src="assets/screenshots/ipad_4.png" alt="BabyEats food detail">
+        </div>
+        <h4>Clinical detail per food</h4>
+        <p>Nutrition facts, prep guides, safe serving shapes, and age-appropriate sizing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SCIENCE ══════════════════════════════ -->
+<section class="science">
+  <div class="container">
+    <div class="science-grid">
+      <div class="science-image">
+        <div class="phone-frame">
+          <img src="assets/screenshots/ipad_5.png" alt="BabyEats allergen safety">
+        </div>
+      </div>
+      <div class="science-content">
+        <h2>Evidence-based.<br>Not Pinterest-inspired.</h2>
+        <p>Every food in the curriculum comes with an age-adjusted introduction risk rating and clinical citation. The schedule is based on actual published research — not someone's blog.</p>
+        <ul class="science-list">
+          <li><span class="check">✓</span> WHO infant feeding guidelines (2023)</li>
+          <li><span class="check">✓</span> American Academy of Pediatrics solid foods policy</li>
+          <li><span class="check">✓</span> ESPGHAN complementary feeding position paper</li>
+          <li><span class="check">✓</span> LEAP trial — early allergen introduction</li>
+          <li><span class="check">✓</span> Iron prioritisation per CDC recommendations</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PRICING ══════════════════════════════ -->
+<section class="pricing">
+  <div class="container">
+    <div class="section-title">
+      <h2>Try it free.<br>Pay once if you love it.</h2>
+      <p>No subscriptions. No ads. No upsells inside the app.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="label">Free Forever</div>
+        <h3>Week 1</h3>
+        <div class="price">Free</div>
+        <div class="price-sub">No trial period · No expiry</div>
+        <ul>
+          <li>Full Week 1 curriculum</li>
+          <li>First 6 foods with prep guides</li>
+          <li>Reaction tracking</li>
+          <li>Allergen guidance</li>
+        </ul>
+      </div>
+      <div class="price-card featured">
+        <span class="popular-badge">Best Value</span>
+        <div class="label">One-time purchase</div>
+        <h3>BabyEats Pro</h3>
+        <div class="price">$9.99</div>
+        <div class="price-sub">Forever access · No recurring fees</div>
+        <ul>
+          <li>Full 24-week curriculum</li>
+          <li>All 72+ foods</li>
+          <li>Iron, allergen & diet customisation</li>
+          <li>Multiple child profiles</li>
+          <li>Future updates included</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FINAL CTA ════════════════════════════ -->
+<section class="final-cta">
+  <div class="container">
+    <h2>Less guessing.<br>More feeding.</h2>
+    <p>Join parents using BabyEats to start solids the smart way — backed by clinical guidance, designed for real life.</p>
+    <a href="https://apps.apple.com/au/app/babyeats-blw-meal-planner/id6759222135" class="btn-white" target="_blank" rel="noopener">
+      Download on App Store
+    </a>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══════════════════════════════ -->
+<footer>
+  <div class="container">
+    <a href="#" class="logo">
+      <img src="assets/icon.png" alt="BabyEats">
+      BabyEats
+    </a>
+    <div class="links">
+      <a href="https://apps.apple.com/au/app/babyeats-blw-meal-planner/id6759222135" target="_blank" rel="noopener">App Store</a>
+      <a href="mailto:hello@babyeats.co">Support</a>
+      <a href="#">Privacy</a>
+    </div>
+    <div>© 2026 Movement by Design Labs</div>
+  </div>
+</footer>
+
+</body>
+</html>
