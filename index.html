@@ -45,9 +45,16 @@
     },
     {
       "@type": "Offer",
-      "name": "BabyEats Pro — Full 24-week plan",
-      "price": "9.99",
-      "priceCurrency": "USD"
+      "name": "BabyEats Pro — Monthly subscription",
+      "price": "3.99",
+      "priceCurrency": "USD",
+      "priceSpecification": {
+        "@type": "UnitPriceSpecification",
+        "price": "3.99",
+        "priceCurrency": "USD",
+        "billingDuration": "P1M",
+        "billingIncrement": 1
+      }
     }
   ],
   "aggregateRating": {
@@ -835,15 +842,15 @@ footer .links a:hover { color: white; }
 <section class="pricing">
   <div class="container">
     <div class="section-title">
-      <h2>Try it free.<br>Pay once if you love it.</h2>
-      <p>No subscriptions. No ads. No upsells inside the app.</p>
+      <h2>Try it free.<br>Cancel any time.</h2>
+      <p>7-day free trial. Then just $3.99 a month. Stop whenever you like.</p>
     </div>
     <div class="pricing-grid">
       <div class="price-card">
         <div class="label">Free Forever</div>
         <h3>Week 1</h3>
         <div class="price">Free</div>
-        <div class="price-sub">No trial period · No expiry</div>
+        <div class="price-sub">No trial · No card required · No expiry</div>
         <ul>
           <li>Full Week 1 curriculum</li>
           <li>First 6 foods with prep guides</li>
@@ -852,20 +859,23 @@ footer .links a:hover { color: white; }
         </ul>
       </div>
       <div class="price-card featured">
-        <span class="popular-badge">Best Value</span>
-        <div class="label">One-time purchase</div>
+        <span class="popular-badge">7 Days Free</span>
+        <div class="label">Monthly subscription</div>
         <h3>BabyEats Pro</h3>
-        <div class="price">$9.99</div>
-        <div class="price-sub">Forever access · No recurring fees</div>
+        <div class="price">$3.99<span style="font-size:18px;font-weight:600;color:var(--text-soft);">/mo</span></div>
+        <div class="price-sub">7-day free trial · Cancel any time</div>
         <ul>
           <li>Full 24-week curriculum</li>
-          <li>All 72+ foods</li>
+          <li>All 72+ foods + prep photos</li>
           <li>Iron, allergen & diet customisation</li>
           <li>Multiple child profiles</li>
-          <li>Future updates included</li>
+          <li>All future updates included</li>
         </ul>
       </div>
     </div>
+    <p style="text-align:center;margin-top:32px;font-size:12px;color:var(--text-soft);max-width:680px;margin-left:auto;margin-right:auto;line-height:1.6;">
+      Subscription auto-renews unless cancelled at least 24 hours before the end of the current period. Manage or cancel any time in your App Store account settings.
+    </p>
   </div>
 </section>
 
